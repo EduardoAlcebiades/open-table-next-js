@@ -1,19 +1,22 @@
 import Link from "next/link";
+import Price from "./Price";
 
-export default function RestaurantCard() {
+import { RestaurantCardType } from "../page";
+
+type Props = {
+  restaurant: RestaurantCardType;
+};
+
+export default function RestaurantCard({ restaurant }: Props) {
   return (
     <Link
-      href="/restaurant/milestones-grill"
+      href={`/restaurant/${restaurant.slug}`}
       className="w-64 h-72 m-3 rounded overflow-hidden border cursor-pointer"
     >
-      <img
-        src="https://resizer.otstatic.com/v2/photos/wide-huge/2/31852905.jpg"
-        alt=""
-        className="w-full h-36"
-      />
+      <img src={restaurant.main_image} alt="" className="w-full h-36" />
 
       <div className="p-1">
-        <h3 className="font-bold text-2xl mb-2">Milestones Grill</h3>
+        <h3 className="font-bold text-2xl mb-2">{restaurant.name}</h3>
 
         <div className="flex items-center">
           <div className="flex mb-2">*****</div>
@@ -22,11 +25,11 @@ export default function RestaurantCard() {
         </div>
 
         <div className="flex text-reg font-light capitalize">
-          <p>Mexican</p>
+          <p className="mr-3">{restaurant.cuisine.name}</p>
 
-          <p className="mx-3">$$$$</p>
+          <Price price={restaurant.price} />
 
-          <p>Toronto</p>
+          <p className="ml-3">{restaurant.location.name}</p>
         </div>
 
         <p className="text-sm mt-1 font-bold">Booked 3 times today</p>

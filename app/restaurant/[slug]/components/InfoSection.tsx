@@ -2,12 +2,18 @@ import Description from "./Description";
 import Rating from "./Rating";
 import Title from "./Title";
 
-export default function InfoSection() {
+import { Restaurant } from "../page";
+
+type Props = {
+  restaurant: Restaurant;
+};
+
+export default function InfoSection({ restaurant }: Props) {
   return (
     <section>
-      <Title />
+      <Title title={restaurant.name} />
       <Rating />
-      <Description />
+      <Description description={restaurant.description} />
     </section>
   );
 }

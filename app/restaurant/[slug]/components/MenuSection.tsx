@@ -1,6 +1,12 @@
 import MenuCard from "./MenuCard";
 
-export default function MenuSection() {
+import { Item } from "@prisma/client";
+
+type Props = {
+  items: Item[];
+};
+
+export default function MenuSection({ items }: Props) {
   return (
     <section className="bg-white">
       <div>
@@ -9,7 +15,18 @@ export default function MenuSection() {
         </div>
 
         <div className="flex flex-wrap justify-between">
-          <MenuCard />
+          {items.length ? (
+            items.map((item) => (
+              <MenuCard
+                key={item.id}
+                title={item.name}
+                description={item.description}
+                price={item.price}
+              />
+            ))
+          ) : (
+            <p>This restaurant does not have any menu item!</p>
+          )}
         </div>
       </div>
     </section>
