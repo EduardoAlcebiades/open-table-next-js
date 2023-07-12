@@ -1,17 +1,24 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { FormEvent, useState } from "react";
 
 export default function SearchBar() {
   const router = useRouter();
+  const searchParams = useSearchParams();
 
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(searchParams?.get("search") ?? "");
 
   function handleSubmit(ev: FormEvent) {
     ev.preventDefault();
 
-    router.push(`/search`);
+    if (!search) {
+      return;
+    }
+
+    setSearch("");
+
+    router.push(`/search?location=${search}`);
   }
 
   return (
@@ -23,6 +30,7 @@ export default function SearchBar() {
         className="rounded text-lg mr-3 w-74 px-2 p-2 w-[450px]"
         type="text"
         placeholder="State, city or town"
+        name="location"
         value={search}
         onChange={(ev) => setSearch(ev.target.value)}
         required

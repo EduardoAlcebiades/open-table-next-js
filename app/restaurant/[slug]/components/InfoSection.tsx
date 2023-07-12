@@ -12,7 +12,7 @@ export default function InfoSection({ restaurant }: Props) {
   return (
     <section>
       <Title title={restaurant.name} />
-      <Rating />
+      <Rating reviews={restaurant.reviews} />
       <Description description={restaurant.description} />
     </section>
   );
