@@ -2,6 +2,7 @@ import MenuSection from "../components/MenuSection";
 import RestaurantNavBar from "../components/RestaurantNavBar";
 
 import { Item, PrismaClient } from "@prisma/client";
+import { notFound } from "next/navigation";
 
 type Props = {
   params: {
@@ -12,9 +13,18 @@ type Props = {
 const prisma = new PrismaClient();
 
 const fetchItems = async (slug: string): Promise<Item[]> => {
-  const items = await prisma.item.findMany({ where: { restaurant: { slug } } });
+  const restaurant = await prisma.restaurant.findUnique({
+    where: { slug },
+    select: {
+      items: true,
+    },
+  });
 
-  return items;
+  if (!restaurant) {
+    notFound();
+  }
+
+  return restaurant.items;
 };
 
 export default async function RestaurantMenu({ params }: Props) {

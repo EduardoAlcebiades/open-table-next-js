@@ -5,6 +5,7 @@ import RestaurantNavBar from "./components/RestaurantNavBar";
 import ReviewsSection from "./components/ReviewsSection";
 
 import { PrismaClient, Review } from "@prisma/client";
+import { notFound } from "next/navigation";
 
 export interface Restaurant {
   id: number;
@@ -18,7 +19,7 @@ export interface Restaurant {
 const prisma = new PrismaClient();
 
 const fetchRestaurantBySlug = async (slug: string): Promise<Restaurant> => {
-  const restaurant = await prisma.restaurant.findUniqueOrThrow({
+  const restaurant = await prisma.restaurant.findUnique({
     where: { slug },
     select: {
       id: true,
@@ -29,6 +30,10 @@ const fetchRestaurantBySlug = async (slug: string): Promise<Restaurant> => {
       reviews: true,
     },
   });
+
+  if (!restaurant) {
+    notFound();
+  }
 
   return restaurant;
 };

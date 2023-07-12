@@ -11,7 +11,7 @@ export default function RestaurantNavBar({ slug }: Props) {
         Overview
       </Link>
 
-      <Link href={`/restaurant/${slug}/menu`}>Menu</Link>
+      <Link href={`/restaurant/${slug}/menu`} className="mr-7">Menu</Link>
     </nav>
   );
 }

@@ -9,7 +9,7 @@ export default function ReservationCard() {
 
   return (
     <form
-      className="sticky top-3 w-[27%] bg-white text-reg p-3 shadow rounded"
+      className="sticky top-3 w-[27%] h-80 bg-white text-reg p-3 shadow rounded"
       onSubmit={onSubmit}
     >
       <div className="text-center border-b pb-2 font-bold">

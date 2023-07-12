@@ -28,7 +28,7 @@ export default function SearchBar() {
     >
       <input
         className="rounded text-lg mr-3 w-74 px-2 p-2 w-[450px]"
-        type="text"
+        type="search"
         placeholder="State, city or town"
         name="location"
         value={search}
