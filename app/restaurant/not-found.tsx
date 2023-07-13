@@ -3,11 +3,7 @@
 import Image from "next/image";
 import errorMascotImg from "../../public/icons/error.png";
 
-type Props = {
-  error: Error;
-};
-
-export default function Error({ error }: Props) {
+export default function Error() {
   return (
     <div className="h-screen bg-gray-200 flex flex-col justify-center items-center">
       <Image src={errorMascotImg} alt="error mascot" className="w-56 mb-8" />

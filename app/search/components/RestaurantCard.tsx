@@ -24,7 +24,7 @@ export default function RestaurantCard({ restaurant }: Props) {
   };
 
   return (
-    <div className="border-b flex pb-5">
+    <div className="border-b flex pb-5 mb-5">
       <img src={restaurant.main_image} alt="" className="w-44 rounded" />
 
       <div className="pl-5">
