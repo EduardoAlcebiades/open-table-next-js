@@ -17,12 +17,17 @@
     "@types/node": "18.15.11",
     "@types/react": "18.0.33",
     "@types/react-dom": "18.0.11",
+    "bcrypt": "^5.1.0",
+    "jose": "^4.14.4",
     "next": "13.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "typescript": "5.0.3"
+    "typescript": "5.0.3",
+    "validator": "^13.9.0"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/validator": "^13.7.17",
     "autoprefixer": "10.4.13",
     "postcss": "8.4.20",
     "prisma": "^4.16.2",
